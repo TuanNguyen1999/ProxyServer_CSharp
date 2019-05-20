@@ -1,0 +1,13 @@
+﻿<Application x:Class="ProxyServer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProxyServer"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="Gray"/>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="ProxyServer.DomainEditor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProxyServer"
+      mc:Ignorable="d" 
+      Width="600" Height="400"
+      Title="BlackList">
+    
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="LabelInvalidation">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.62*"/>
+            <ColumnDefinition Width="0.19*"/>
+            <ColumnDefinition Width="0.19*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Add - Remove-->
+        <TextBox Name="textBoxInput" Height="25" VerticalContentAlignment="Center" Margin="3,0,0,0"
+                 Text="Domain's name, e.g: abc.com, www.bongda.vn"/>
+
+        <Button Name="buttonAdd" Margin="5" Height="25" Grid.Column="1" 
+                Content="Add" 
+                ClickMode="Release" Click="ButtonAdd_Click"/>
+        <Button Name="buttonRemove" Margin="5" Height="25" Grid.Column="2"
+                Content="Remove" 
+                ClickMode="Release" Click="ButtonRemove_Click"/>
+        <!-- Display Contents-->
+        <ListBox Name="listboxDisplayDomain" Grid.Row="1" Margin="3,0,0,0" SelectionMode="Extended"
+                 KeyUp="KeyUp_DeleteItems" ItemsSource="{Binding Items, Mode=OneWay}">
+        </ListBox>
+    </Grid>
+</Window>
