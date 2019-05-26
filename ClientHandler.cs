@@ -274,7 +274,7 @@ namespace ProxyServer
                 }
 
                 // Try connecting and sending request to server if successfully connected in a seperate thread,
-                // which returns a flag indicating the result of operation
+                // returns a flag indicating the result of operation
                 int ResultFlag = 0;
                 TcpClient tcp = new TcpClient();
                 Socket HostSocket = tcp.Client;
@@ -506,19 +506,19 @@ namespace ProxyServer
                 string method, http, uri, hostName, strPort;
 
                 // Get request's method
-                int methodStartPos = httprequest.IndexOf(' ');
-                method = httprequest.Substring(0, methodStartPos);
+                int methodEndPos = httprequest.IndexOf(' ');
+                method = httprequest.Substring(0, methodEndPos);
 
                 // Get request's uri after method
-                int uriStartPos = httprequest.IndexOf(' ', methodStartPos + 1);
-                uri = httprequest.Substring(methodStartPos + 1, uriStartPos - methodStartPos - 1);
+                int uriEndPos = httprequest.IndexOf(' ', methodEndPos + 1);
+                uri = httprequest.Substring(methodEndPos + 1, uriEndPos - methodEndPos - 1);
 
                 // Get http version
-                int httpStartPos = httprequest.IndexOfAny(new char[2] { '\r', '\n' }, uriStartPos + 1);
-                http = httprequest.Substring(uriStartPos + 1, httpStartPos - uriStartPos - 1);
+                int httpEndPos = httprequest.IndexOfAny(new char[2] { '\r', '\n' }, uriEndPos + 1);
+                http = httprequest.Substring(uriEndPos + 1, httpEndPos - uriEndPos - 1);
 
                 //Get host name and its port
-                int hostStartPos = httprequest.IndexOf("Host: ", httpStartPos + 1);
+                int hostStartPos = httprequest.IndexOf("Host: ", httpEndPos + 1);
                 int hostNameEndPos = httprequest.IndexOfAny(new char[3] { '\r', '\n', ':' }, hostStartPos + 6);
                 hostName = httprequest.Substring(hostStartPos + 6, hostNameEndPos - hostStartPos - 6);
 
