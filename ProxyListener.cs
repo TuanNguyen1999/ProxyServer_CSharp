@@ -8,7 +8,6 @@ namespace ProxyServer
     public class ProxyListener
     {
         private int m_proxyPort;
-        private IPAddress m_proxyIP;
         private TcpListener m_tcpListener;
         private TcpClient m_tcpClient;
         private Thread m_processThread;
@@ -18,7 +17,6 @@ namespace ProxyServer
         public ProxyListener()
         {
             m_proxyPort = 8888;
-            m_proxyIP = new IPAddress(new byte[4] { 127, 0, 0, 1 });
             m_tcpListener = new TcpListener(IPAddress.Any, m_proxyPort);
             m_tcpClient = null;
         }
