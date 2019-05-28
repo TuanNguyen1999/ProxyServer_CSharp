@@ -19,7 +19,7 @@ namespace ProxyServer
         {
             m_proxyPort = 8888;
             m_proxyIP = new IPAddress(new byte[4] { 127, 0, 0, 1 });
-            m_tcpListener = new TcpListener(m_proxyIP, m_proxyPort);
+            m_tcpListener = new TcpListener(IPAddress.Any, m_proxyPort);
             m_tcpClient = null;
         }
 
